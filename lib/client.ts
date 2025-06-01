@@ -129,7 +129,8 @@ export class BiHTTPClient {
       headers: {
         "Content-Type": "application/json",
       },
-    }).catch((error) => {
+      duplex: "half",
+    } as RequestInit).catch((error) => {
       if (error instanceof DOMException && error.name === "AbortError") {
         console.log("POST connection aborted");
       } else {
