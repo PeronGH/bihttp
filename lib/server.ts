@@ -14,8 +14,8 @@ export class BiHTTPServer {
   // Unregister a message handler
   public removeMessageHandler(
     handler: (message: unknown, clientId: string) => void,
-  ): void {
-    this.messageHandlers.delete(handler);
+  ): boolean {
+    return this.messageHandlers.delete(handler);
   }
 
   // Clear all message handlers
