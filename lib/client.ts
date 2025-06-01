@@ -35,7 +35,7 @@ export class BiHTTPClient {
       await this.setupGetConnection();
 
       // Setup POST connection (client-to-server)
-      await this.setupPostConnection();
+      this.setupPostConnection();
 
       this.connected = true;
     } catch (error) {
@@ -109,7 +109,7 @@ export class BiHTTPClient {
     this.processServerMessages(response.body);
   }
 
-  private async setupPostConnection(): Promise<void> {
+  private setupPostConnection() {
     this.postController = new AbortController();
 
     const url = new URL(this.serverUrl);

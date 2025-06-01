@@ -105,7 +105,7 @@ export class BiHTTPServer {
           }
 
           // Process any remaining data
-          decoder.decode(new Uint8Array(0));
+          decoder.decode();
 
           return new Response("OK", {
             headers: {
