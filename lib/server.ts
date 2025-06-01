@@ -4,13 +4,18 @@ export class BiHTTPServer {
   private messageHandlers: Set<(message: unknown, clientId: string) => void> =
     new Set();
 
-  constructor() {}
-
   // Register a message handler
   public onMessage(
     handler: (message: unknown, clientId: string) => void,
   ): void {
     this.messageHandlers.add(handler);
+  }
+
+  // Unregister a message handler
+  public removeMessageHandler(
+    handler: (message: unknown, clientId: string) => void,
+  ): void {
+    this.messageHandlers.delete(handler);
   }
 
   // Send a message to a specific client

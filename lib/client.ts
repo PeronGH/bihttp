@@ -130,7 +130,11 @@ export class BiHTTPClient {
         "Content-Type": "application/json",
       },
     }).catch((error) => {
-      console.error("POST connection error:", error);
+      if (error instanceof DOMException && error.name === "AbortError") {
+        console.log("POST connection aborted");
+      } else {
+        console.error("POST connection error:", error);
+      }
       this.disconnect();
     });
   }
