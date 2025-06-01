@@ -18,6 +18,11 @@ export class BiHTTPServer {
     this.messageHandlers.delete(handler);
   }
 
+  // Clear all message handlers
+  public clearMessageHandlers(): void {
+    this.messageHandlers.clear();
+  }
+
   // Send a message to a specific client
   public sendMessage(clientId: string, message: unknown): boolean {
     const controller = this.clients.get(clientId);
