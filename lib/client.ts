@@ -24,6 +24,18 @@ export class BiHTTPClient {
     this.messageHandlers.add(handler);
   }
 
+  // Unregister a message handler
+  public removeMessageHandler(
+    handler: (message: unknown) => void,
+  ): boolean {
+    return this.messageHandlers.delete(handler);
+  }
+
+  // Clear all message handlers
+  public clearMessageHandlers(): void {
+    this.messageHandlers.clear();
+  }
+
   // Connect to the server
   public async connect(): Promise<void> {
     if (this.connected) {
